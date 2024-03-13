@@ -1,11 +1,22 @@
 import { useState } from 'react'
 import './Filters.css'
 
-export function Filters() {
+export function Filters({ onChange }) {
   const [minPrice, setMinPrice] = useState(0)
 
   const handleChangeMinPrice = (event) => {
     setMinPrice(event.target.value)
+    onChange(prevState => ({
+      ...prevState,
+      minPrice: event.target.value
+    }))
+  }
+
+  const handleChangeCategory = (event) => {
+    onChange(prevState => ({
+      ...prevState,
+      category: event.target.value
+    }))
   }
 
   return (
@@ -25,7 +36,7 @@ export function Filters() {
 
       <div>
         <label htmlFor='category'>Categoría</label>
-        <select id='category'>
+        <select id='category' onChange={handleChangeCategory}>
           <option value='all'>Todas</option>
           <option value='laptops'>Laptops</option>
           <option value='smartphones'>Celulares</option>
