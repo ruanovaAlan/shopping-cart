@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react'
 
 // Consume
-export const FiltersContext = createContext()
+export const FiltersContext = createContext() // <- singleton
 
 // Provider
 export function FiltersProvider({ children }) {
